@@ -37,6 +37,21 @@ function App() {
   const nombreActives = todos.filter(t => !t.completed).length;
   const nombreTerminees = todos.filter(t => t.completed).length;
 
+  // State pour le filtre
+  const [filtre, setFiltre] = useState('toutes');
+
+  // Fonction pour filtrer les todos
+  const getTodosFilters = () => {
+    switch (filtre) {
+      case 'actives':
+        return todos.filter(t => !t.completed);
+      case 'terminees':
+        return todos.filter(t => t.completed);
+      default:
+        return todos;
+    }
+  };
+
   // Utiliser TodoForm et TodoList pour ajouter et afficher des tâches
   return (
     <div className="App">
@@ -47,8 +62,13 @@ function App() {
           <p>Actives : {nombreActives}</p>
           <p>Terminées : {nombreTerminees}</p>
         </div>
+        <div>
+          <button onClick={() => setFiltre('toutes')}>Toutes</button>
+          <button onClick={() => setFiltre('actives')}>Actives</button>
+          <button onClick={() => setFiltre('terminees')}>Terminées</button>
+        </div>
         <TodoForm onAjouter={ajouterTodo} />
-        <TodoList todos={todos} onToggle={toggleTodo} onSupprimer={supprimerTodo} />
+        <TodoList todos={getTodosFilters()} onToggle={toggleTodo} onSupprimer={supprimerTodo} />
       </header>
     </div>
   );
