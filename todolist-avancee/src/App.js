@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 
 import TodoForm from './components/TodoForm';
+import TodoList from './components/TodoList';
 import './App.css';
 
 
@@ -19,12 +20,25 @@ function App() {
     setTodos([...todos, nouveauTodo]);
   }
 
-  // 3. Utiliser TodoForm pour ajouter des tâches
+  // Fonction pour cocher/décocher une tâche
+  function toggleTodo(id) {
+    setTodos(todos.map(todo =>
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    ));
+  }
+
+  // Fonction pour supprimer une tâche
+  function supprimerTodo(id) {
+    setTodos(todos.filter(todo => todo.id !== id));
+  }
+
+  // Utiliser TodoForm et TodoList pour ajouter et afficher des tâches
   return (
     <div className="App">
       <header className="App-header">
         <h1>Ma TodoList</h1>
         <TodoForm onAjouter={ajouterTodo} />
+        <TodoList todos={todos} onToggle={toggleTodo} onSupprimer={supprimerTodo} />
       </header>
     </div>
   );
