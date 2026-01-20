@@ -32,7 +32,14 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Style pour le bouton de filtre actif */
+.filtres button.actif {
+  background: #2C5AA0;
+  color: white;
 }

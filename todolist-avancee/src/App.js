@@ -62,10 +62,25 @@ function App() {
           <p>Actives : {nombreActives}</p>
           <p>Terminées : {nombreTerminees}</p>
         </div>
-        <div>
-          <button onClick={() => setFiltre('toutes')}>Toutes</button>
-          <button onClick={() => setFiltre('actives')}>Actives</button>
-          <button onClick={() => setFiltre('terminees')}>Terminées</button>
+        <div className="filtres">
+          <button
+            className={filtre === 'toutes' ? 'actif' : ''}
+            onClick={() => setFiltre('toutes')}
+          >
+            Toutes
+          </button>
+          <button
+            className={filtre === 'actives' ? 'actif' : ''}
+            onClick={() => setFiltre('actives')}
+          >
+            Actives
+          </button>
+          <button
+            className={filtre === 'terminees' ? 'actif' : ''}
+            onClick={() => setFiltre('terminees')}
+          >
+            Terminées
+          </button>
         </div>
         <TodoForm onAjouter={ajouterTodo} />
         <TodoList todos={getTodosFilters()} onToggle={toggleTodo} onSupprimer={supprimerTodo} />
