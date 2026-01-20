@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
@@ -7,8 +7,15 @@ import './App.css';
 
 
 function App() {
-  // 1. Créer le state principal
-  const [todos, setTodos] = useState([]);
+  // 1. Créer le state principal avec récupération depuis localStorage
+  const [todos, setTodos] = useState(() => {
+    const sauvegardes = localStorage.getItem('todos');
+    return sauvegardes ? JSON.parse(sauvegardes) : [];
+  });
+  // 2. Sauvegarder dans le localStorage à chaque changement de todos
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   // 2. Créer la fonction ajouterTodo
   function ajouterTodo(text) {
