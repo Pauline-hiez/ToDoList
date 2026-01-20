@@ -32,18 +32,27 @@ function App() {
     setTodos(todos.filter(todo => todo.id !== id));
   }
 
+  // Statistiques
+  const nombreTotal = todos.length;
+  const nombreActives = todos.filter(t => !t.completed).length;
+  const nombreTerminees = todos.filter(t => t.completed).length;
+
   // Utiliser TodoForm et TodoList pour ajouter et afficher des tâches
   return (
     <div className="App">
       <header className="App-header">
         <h1>Ma TodoList</h1>
+        <div className="stats">
+          <p>Total : {nombreTotal}</p>
+          <p>Actives : {nombreActives}</p>
+          <p>Terminées : {nombreTerminees}</p>
+        </div>
         <TodoForm onAjouter={ajouterTodo} />
         <TodoList todos={todos} onToggle={toggleTodo} onSupprimer={supprimerTodo} />
       </header>
     </div>
   );
 }
-
 
 export default App;
 
