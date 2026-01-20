@@ -1,3 +1,112 @@
+form input[type="text"] {
+  height: 48px;
+  font-size: 16px;
+  padding: 0 12px;
+  border-radius: 11px;
+  border: 1px solid #e0e0e0;
+  margin-right: 8px;
+  box-sizing: border-box;
+}
+.filtres {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.sketch-button {
+  margin-bottom: 0 !important;
+}
+
+/* Effet sketch-button pour les boutons */
+.sketch-button {
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  appearance: none;
+  outline: none;
+  border: none;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  background-image: linear-gradient(90deg, #fcecfe, #fbf6e7, #e6fcf5);
+  border-radius: 11px;
+  padding: 12px 20px;
+  position: relative;
+  line-height: 24px;
+  color: #14387e;
+  box-shadow: 0 1px 2px rgba(0 0 0 / 2%), 0 4px 16px rgba(0 0 0 / 2%),
+    0 4px 24px rgba(0 0 0 / 2%);
+}
+
+.sketch-button.start svg {
+  animation: stroke 1s linear;
+}
+
+.sketch-button .lines {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: hard-light;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sketch-button .lines>div {
+  position: absolute;
+  inset: 0;
+}
+
+.sketch-button .lines>div:last-child {
+  transform: rotate(180deg);
+}
+
+.sketch-button .lines svg {
+  display: block;
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+  fill: none;
+  stroke-width: 2;
+  stroke: #c9e9ff;
+  width: 100%;
+  height: 100%;
+  stroke-dasharray: 2 10;
+  stroke-dashoffset: 14;
+  opacity: 0;
+}
+
+.sketch-button .lines svg:nth-child(1) {
+  stroke: #f8fcff;
+}
+
+.sketch-button .lines svg:nth-child(2) {
+  stroke-width: 6px;
+  filter: blur(20px);
+}
+
+.sketch-button .lines svg:nth-child(3) {
+  stroke-width: 5px;
+  filter: blur(6px);
+}
+
+.sketch-button .lines svg:nth-child(4) {
+  stroke-width: 10px;
+  filter: blur(56px);
+}
+
+@keyframes stroke {
+
+  30%,
+  55% {
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 4;
+    opacity: 0;
+  }
+}
+
 .App {
   text-align: center;
 }
@@ -14,7 +123,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #152647;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

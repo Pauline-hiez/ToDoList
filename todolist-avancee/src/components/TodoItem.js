@@ -36,8 +36,18 @@ function TodoItem({ todo, onToggle, onSupprimer, onEditer }) {
                     {todo.text}
                 </span>
             )}
-            <button onClick={() => setEdition(true)} style={{ marginLeft: 8 }}>Éditer</button>
-            <button onClick={() => onSupprimer(todo.id)} style={{ marginLeft: 8 }}>
+            <button
+                className="sketch-button"
+                onClick={() => setEdition(true)}
+                style={{ marginLeft: 8 }}
+            >
+                Éditer
+            </button>
+            <button
+                className="sketch-button"
+                onClick={() => onSupprimer(todo.id)}
+                style={{ marginLeft: 8 }}
+            >
                 Supprimer
             </button>
         </li>
