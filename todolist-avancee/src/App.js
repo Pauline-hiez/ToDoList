@@ -66,6 +66,13 @@ function App() {
     }
   };
 
+  // Fonction pour éditer une tâche
+  const editerTodo = (id, nouveauTexte) => {
+    setTodos(todos.map(todo =>
+      todo.id === id ? { ...todo, text: nouveauTexte } : todo
+    ));
+  };
+
   // Utiliser TodoForm et TodoList pour ajouter et afficher des tâches
   return (
     <div className="App">
@@ -98,7 +105,7 @@ function App() {
           </button>
         </div>
         <TodoForm onAjouter={ajouterTodo} />
-        <TodoList todos={getTodosFilters()} onToggle={toggleTodo} onSupprimer={supprimerTodo} />
+        <TodoList todos={getTodosFilters()} onToggle={toggleTodo} onSupprimer={supprimerTodo} onEditer={editerTodo} />
       </header>
     </div>
   );
