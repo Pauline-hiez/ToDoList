@@ -1,6 +1,6 @@
 
-import React, { useState, useEffect } from 'react';
 
+import React, { useState, useEffect } from 'react';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 import './App.css';
@@ -59,6 +59,13 @@ function App() {
     }
   };
 
+  // Fonction pour tout supprimer avec confirmation
+  const toutSupprimer = () => {
+    if (window.confirm('Supprimer toutes les tâches ?')) {
+      setTodos([]);
+    }
+  };
+
   // Utiliser TodoForm et TodoList pour ajouter et afficher des tâches
   return (
     <div className="App">
@@ -69,6 +76,7 @@ function App() {
           <p>Actives : {nombreActives}</p>
           <p>Terminées : {nombreTerminees}</p>
         </div>
+        <button onClick={toutSupprimer} style={{ marginBottom: 16 }}>Tout supprimer</button>
         <div className="filtres">
           <button
             className={filtre === 'toutes' ? 'actif' : ''}
